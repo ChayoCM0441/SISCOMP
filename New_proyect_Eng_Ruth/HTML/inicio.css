@@ -1,0 +1,76 @@
+body {
+  background-color: rgb(216, 191, 216);
+  display: grid;
+  grid-template-columns: 200px auto;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+      "header header"
+      "sidebar main"
+      "navbar footer";
+  gap: 10px;
+}
+
+header {
+  grid-area: header;
+  background-color: #05050541;
+  padding: 10px;
+  text-align: center;
+}
+
+header h1 {
+  color: rgb(0, 0, 0);
+  font-size: 36px;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background-color: #f4f4f4;
+  padding: 10px;
+}
+
+.sidebar h3 {
+  color: #4CAF50;
+  margin-bottom: 5px;
+}
+
+main {
+  grid-area: main;
+  padding: 10px;
+}
+
+.navbar {
+  grid-area: navbar;
+  background-color: #333;
+  overflow: hidden;
+}
+
+.navbar a {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+footer {
+  grid-area: footer;
+  background-color: #333;
+  padding: 10px;
+  text-align: center;
+  width: 100%; /* Ajustar el ancho al 100% */
+}
+
+footer p {
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
