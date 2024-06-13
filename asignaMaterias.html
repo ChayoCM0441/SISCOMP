@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asignación de Materias</title>
+    <link rel="stylesheet" href="/CSS/asignacion_materiaHorario.css">
+</head>
+
+<body>
+    <header>
+        <h1>SISCOMP</h1>
+        <p>Asignación de Materias</p>
+    </header>
+    <aside class="sidebar">
+        <h3>Registro de Profesores</h3>
+        <p>Registre los datos de los profesores y docentes.</p>
+        <h3>Asignación de Materias</h3>
+        <p>Asigne materias a los profesores y docentes.</p>
+        <h3>Control de Horarios</h3>
+        <p>Controle y gestione los horarios de clases.</p>
+        <h3>Materiales de Clases</h3>
+        <p>Administre el material disponible para las clases.</p>
+        <h3>Software a utilizar</h3>
+        <p>Elige el software por utilizar en el laboratorio</p>
+    </aside>
+    <main>
+        <div class="navbar">
+            <a href="index.html">Inicio</a>
+            <a href="asignaMaterias.html">Asignación de Materias</a>
+            <a href="controlHorarios.html">Control de Horarios</a>
+            <a href="mat_class.html">Materiales de Clases</a>
+            <a href="reservas_desktop.html">Ver reservaciones</a>
+            <a href="SoftaUtilizar.html">Software a utilizar</a>
+            <a href="logout.html" class="logout-button">Cerrar Sesión</a>
+        </div><br>
+        <!-- Contenido de la página -->
+        <div class="content-wrapper">
+            <h2>Asignación de Materias</h2>
+            <form id="materia-form">
+                <div>
+                    <label for="materia">Materia:</label>
+                    <input type="text" id="materia" required>
+                </div>
+                <div>
+                    <label for="horas">Horas:</label>
+                    <input type="number" id="horas" required>
+                </div>
+                <div>
+                    <label for="turno">Turno:</label>
+                    <select id="turno" required>
+                        <option value="Mañana">Mañana</option>
+                        <option value="Tarde">Tarde</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="aula">Aula:</label>
+                    <input type="text" id="aula" required>
+                </div>
+                <div>
+                    <label for="edificio">Edificio:</label>
+                    <input type="text" id="edificio" required>
+                </div>
+                <div>
+                    <label for="clave">Clave Única:</label>
+                    <input type="text" id="clave" required>
+                </div>
+                <!-- Campo para indicar si necesita laboratorio -->
+                <div>
+                    <label for="laboratorio">¿Necesita laboratorio?</label>
+                    <input type="checkbox" id="laboratorio" name="laboratorio">
+                </div>
+            </form>
+            <!-- Previsualización del horario -->
+            <div id="materia-list">
+                <!-- Aquí se mostrarán las materias agregadas -->
+            </div>
+            <!-- Botón para confirmar el horario -->
+            <button id="confirm-button" type="button" onclick="redirigirAIndex()">Confirmar Horario</button>
+            <!-- Botón para reiniciar el horario -->
+            <button id="reiniciar-button" type="button">Reiniciar Horario</button>
+            <!-- Notificación -->
+            <div id="notification" style="display: none;">
+                <p>El horario ya está formulado.</p>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 SISCOMP - Todos los derechos reservados</p>
+    </footer>
+    <script src="/CSS/JS/asignacion_de_materias.js"></script>
+    <script>
+        // Función para redirigir al index después de mostrar la notificación
+        function redirigirAIndex() {
+            // Redirigir al index
+            window.location.href = 'index.html';
+        }
+    
+        // Función para confirmar el horario
+        document.getElementById("confirm-button").addEventListener("click", function() {
+            // Obtener el horario actual del formulario
+            const horarioActual = obtenerHorarioActual();
+    
+            // Guardar el horario en localStorage
+            guardarHorarioEnLocalStorage(horarioActual);
+    
+            // Mostrar notificación de confirmación
+            document.getElementById("notification").style.display = "block";
+    
+            // Redirigir al index después de 2 segundos
+            setTimeout(function() {
+                window.location.href = 'index.html';
+            }, 2000); // 2000 milisegundos = 2 segundos
+        });
+    
+        // Función para guardar el horario en localStorage
+        function guardarHorarioEnLocalStorage(horario) {
+            // Obtener el horario almacenado en localStorage
+            let horariosGuardados = JSON.parse(localStorage.getItem("horarios")) || [];
+    
+            // Agregar el nuevo horario al arreglo
+            horariosGuardados.push(horario);
+    
+            // Guardar el arreglo actualizado en localStorage
+            localStorage.setItem("horarios", JSON.stringify(horariosGuardados));
+        }
+    </script>
+    
+</body>
+</html>

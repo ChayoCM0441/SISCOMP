@@ -1,0 +1,141 @@
+/* Estilos generales */
+body {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 200px auto;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+    gap: 10px;
+    min-height: 100vh;
+    background-color: rgb(216, 191, 216);
+}
+
+header {
+    grid-area: header;
+    background-color: #05050541;
+    padding: 1em 0;
+    text-align: center;
+    width: 100%;
+}
+
+header h1 {
+    color: rgb(0, 0, 0);
+    font-size: 36px;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: #ddd;
+    padding: 20px;
+    width: 200px;
+    margin-top: -10px;
+    justify-self: start;
+}
+
+.sidebar h3 {
+    color: #4CAF50;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.sidebar ul, li, h3 {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.navbar {
+    grid-area: navbar;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #333;
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.navbar a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar a:first-child {
+    background-color: #4CAF50;
+}
+
+.navbar a:hover {
+    background-color: #555;
+}
+
+.navbar a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.logout-button {
+    background-color: #333;
+    color: white;
+}
+footer {
+    grid-area: footer;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    width: 100%; /* Ancho de la ventana */
+    margin-top: -10px; /* Sube un poco el footer */
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+}
+.content-wrapper {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.content-wrapper h2 {
+    text-align: center;
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+.software-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.software-list li {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.software-list li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.software-list li:hover {
+    background-color: #f0f0f0;
+}

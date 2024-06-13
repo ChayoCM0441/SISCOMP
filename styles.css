@@ -1,0 +1,324 @@
+body {
+  margin: auto;
+  padding: 0;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 200px auto; /* Ancho de la barra lateral y el contenido */
+  grid-template-rows: auto 1fr auto; /* Ajuste del orden para colocar el contenedor principal y el sidebar */
+  grid-template-areas:
+    "header header"
+    "sidebar main" /* Colocamos el sidebar y el contenedor principal juntos */
+    "footer footer"; /* Footer ocupa toda la fila */
+  gap: 10px;
+  min-height: 100vh;
+background-color: rgb(216, 191, 216);
+}
+/* Estilos para la barra de navegación */
+.navbar {
+  grid-area: navbar;
+  position: absolute; /* Posicionamos la barra de navegación de forma absoluta */
+  top: 25%; /* Ajustamos para que esté entre el header y el contenedor */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #333;
+  overflow: hidden;
+  width: 100%;
+  display: flex; /* Para colocar los elementos de forma horizontal */
+  justify-content: center; /* Centrar elementos en la barra de navegación */
+  text-align: center;
+}
+.navbar a {
+  display: inline-block; /* Para que los elementos sean en línea */
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.navbar a:first-child {
+  background-color: #4CAF50; /* Color de fondo verde para el primer enlace */
+}
+.navbar a:hover {
+  background-color: #555; /* Cambio de color de fondo en el hover */
+}
+.navbar a.active {
+  background-color: #4CAF50; /* Color de fondo activo */
+  color: white;
+}
+/* Estilos para el encabezado */
+header {
+  grid-area: header;
+  background-color: #05050541;
+  padding: 1em 0;
+  text-align: center;
+  position: relative;
+  width: 100%; /* Hacer el header ocupar todo el ancho disponible */
+}
+header h1 {
+  color: rgb(0, 0, 0);
+  font-size: 36px;
+}
+.sidebar {
+  grid-area: sidebar;
+  background-color: #ddd;
+  padding: 20px;
+  width: 200px;
+  margin-top: -10px; /* Sube un poco la barra lateral */
+  justify-self: start; /* Mantén la barra lateral al inicio del contenedor */
+}
+.sidebar h3 {
+  color: #4CAF50;
+  margin-bottom: 5px;
+  text-align: center; /* Centra el texto del encabezado de la barra lateral */
+}
+.sidebar ul, li, h3 {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 10px;
+  
+}
+footer {
+  grid-area: footer;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  width: 100%; /* Ancho de la ventana */
+  margin-top: -10px; /* Sube un poco el footer */
+  display: flex;
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
+}
+main {
+  grid-area: main;
+  display: grid;
+  grid-template-areas:
+      "navbar"
+      "header"
+      "content";
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  margin-top: 10px; /* Ajuste para compensar el margen negativo del footer */
+  box-sizing: border-box; /* Mantenemos el ancho dentro del padding y el borde */
+}
+
+/* Estilos base para la foto de perfil */
+.profile-photo {
+  display: block;
+  width: 250px; /* Tamaño predeterminado para ordenadores */
+  height: 250px; /* Tamaño predeterminado para ordenadores */
+  max-width: 100%; /* La imagen no será más ancha que el contenedor */
+  max-height: 100%; /* La imagen no será más alta que el contenedor */
+  border-radius: 15px;
+  margin: auto;
+}
+.teacher-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra verticalmente */
+  align-items: center; /* Centra horizontalmente */
+  text-align: center; /* Centra el texto dentro de los elementos */
+  margin-top: 0px; /* Espacio en la parte superior */
+  background-color: white;
+  padding: inherit;
+  padding-top: 30px;
+  border-radius: 15px;
+}
+.name-container, .careers-container {
+  margin-bottom: 20px; /* Espacio en la parte inferior */
+}
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: auto; /* Centra los botones horizontal y verticalmente */
+  display: block; /* Convertir el botón en un bloque para aplicar margen automático */
+}
+.profile-container {
+  display: flex;
+  align-items: center;
+}
+.profile-photo-container {
+  margin-right: 15px;
+}
+.name-container, .careers-container {
+  margin-bottom: 20px;
+}
+.save-button {
+  display: none;
+}
+@media print {
+  /* Oculta la barra de navegación */
+  .navbar { display: none; }
+  /* Oculta otros elementos que no quieres imprimir */
+  .profile-photo-input, .edit-button, .save-button, .logout-button1 { display: none; }
+  /* Ajusta el contenido para que ocupe todo el espacio de la página */
+  main { margin: 0; padding: 0; width: 100%; box-sizing: border-box; text-align: left; }
+  /* Ajusta la tabla para que se extienda sobre la página */
+  .schedule-table { width: 100%; border-collapse: collapse; margin: auto; }
+  /* Ajusta el pie de página */
+  footer { position: fixed; bottom: 0; width: 100%; text-align: center; background-color: #ccc; padding: 10px; font-size: 12px; }
+}
+
+/* Estilos para la tabla */
+.schedule-table {
+width: 100%;
+border-collapse: collapse;
+margin-bottom: 50px;
+}
+.schedule-table th, .schedule-table td {
+border: 1px solid #070707;
+padding: 8px;
+text-align: center;
+}
+.schedule-table th {
+background-color: #ffd103;
+}
+.logout-button1{
+background-color: red;
+}
+.login-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra verticalmente */
+  align-items: center; /* Centra horizontalmente */
+  text-align: center; /* Centra el texto dentro de los elementos */
+  position: absolute; /* Posiciona de forma absoluta */
+  top: 50%; /* Centra verticalmente */
+  left: 50%; /* Centra horizontalmente */
+  transform: translate(-50%, -50%); /* Centra respecto al centro */
+  margin-top: 0px; /* Espacio en la parte superior */
+  background-color: #f9f9f9; /* Color de fondo */
+  padding: 40px; /* Espaciado interno */
+  border-radius: 15px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+  width: 80%; /* Ancho del contenedor */
+  max-width: 400px; /* Ancho máximo */
+}
+
+.login-box h1 {
+  margin-bottom: 20px; /* Espaciado inferior del encabezado */
+  font-size: 24px; /* Tamaño del texto del encabezado */
+  color: #333; /* Color del texto */
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"] {
+  width: 100%; /* Ancho completo */
+  padding: 10px; /* Espaciado interno */
+  margin-bottom: 20px; /* Espaciado inferior */
+  border: 1px solid #ccc; /* Borde */
+  border-radius: 5px; /* Bordes redondeados */
+}
+
+.login-box button {
+  width: 100%; /* Ancho completo */
+  padding: 10px; /* Espaciado interno */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  background-color: #007bff; /* Color de fondo */
+  color: #fff; /* Color del texto */
+  font-size: 16px; /* Tamaño del texto */
+  cursor: pointer; /* Cursor al pasar sobre el botón */
+  transition: background-color 0.3s; /* Transición suave */
+}
+
+.login-box button:hover {
+  background-color: #0056b3; /* Cambio de color al pasar sobre el botón */
+}
+
+.login-box a {
+  color: #007bff; /* Color del enlace */
+  text-decoration: none; /* Sin subrayado */
+}
+
+.login-box a:hover {
+  text-decoration: underline; /* Subrayado al pasar sobre el enlace */
+}
+.forgot-password-box {
+  background-color: #f9f9f9;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.forgot-password-box h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.forgot-password-box input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.forgot-password-box button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.forgot-password-box button:hover {
+  background-color: #0056b3;
+}
+
+.forgot-password-box a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.forgot-password-box a:hover {
+  text-decoration: underline;
+}
+.crud-buttons {
+  display: flex;
+  justify-content: center; /* Centra los botones horizontalmente */
+  gap: 10px; /* Espacio entre los botones */
+  margin: 10px 0;
+}
+
+.acciones-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 5px; /* Espacio entre los botones */
+}
+#tabla-horarios {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#tabla-horarios th, #tabla-horarios td {
+  border: 1px solid #000000;
+  padding: 8px;
+  text-align: left;
+}
+
+#tabla-horarios th {
+  background-color: #000000;
+  color: #fff7f7;
+}
+
+#tabla-horarios tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#tabla-horarios tbody tr:hover {
+  background-color: #ddd;
+}

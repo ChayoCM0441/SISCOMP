@@ -1,0 +1,151 @@
+body {
+    margin: auto;
+    padding: 0;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 200px auto; /* Ancho de la barra lateral y el contenido */
+    grid-template-rows: auto minmax(calc(100vh - 50px), auto) 50px; /* Ajuste del orden para colocar el contenedor principal y el sidebar */
+    grid-template-areas:
+      "header header"
+      "sidebar main" /* Colocamos el sidebar y el contenedor principal juntos */
+      "footer footer"; /* Footer ocupa toda la fila */
+    gap: 10px;
+    min-height: 100vh;
+    background-color: rgb(216, 191, 216);
+} 
+
+/* Estilos para el encabezado */
+header {
+    grid-area: header;
+    background-color: #05050541;
+    padding: 1em 0;
+    text-align: center;
+    position: relative;
+    width: 100%; /* Hacer el header ocupar todo el ancho disponible */
+}
+
+header h1 {
+    color: rgb(0, 0, 0);
+    font-size: 36px;
+}
+
+/* Estilos para la barra de navegación */
+.navbar {
+    grid-area: navbar;
+    position: absolute; /* Posicionamos la barra de navegación de forma absoluta */
+    top: 25%; /* Ajustamos para que esté entre el header y el contenedor */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #333;
+    overflow: hidden;
+    width: 100%;
+    display: flex; /* Para colocar los elementos de forma horizontal */
+    justify-content: center; /* Centrar elementos en la barra de navegación */
+    text-align: center;
+}
+
+.navbar a {
+    display: inline-block; /* Para que los elementos sean en línea */
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar a:first-child {
+    background-color: #4CAF50; /* Color de fondo verde para el primer enlace */
+}
+
+.navbar a:hover {
+    background-color: #555; /* Cambio de color de fondo en el hover */
+}
+
+.navbar a.active {
+    background-color: #4CAF50; /* Color de fondo activo */
+    color: white;
+}
+
+/* Estilos para el barra lateral */
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: #ddd;
+    padding: 20px;
+    width: 200px;
+    margin-top: -10px; /* Sube un poco la barra lateral */
+    justify-self: start; /* Mantén la barra lateral al inicio del contenedor */
+  }
+  
+  .sidebar h3 {
+    color: #4CAF50;
+    margin-bottom: 5px;
+    text-align: center; /* Centra el texto del encabezado de la barra lateral */
+  }
+  
+  .sidebar ul, li, h3 {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 10px;
+    
+  }
+
+  footer {
+    grid-area: footer;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    width: 100%; /* Ancho de la ventana */
+    margin-top: -10px; /* Sube un poco el footer */
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+} 
+.main-content {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.reservation-container {
+    max-width: 800px;
+    width: 100%;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.reservation-container h2 {
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+.reservas-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.reservas-table th, .reservas-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.reservas-table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.reservas-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.reservas-table tr:hover {
+    background-color: #ddd;
+}

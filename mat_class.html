@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materiales de clase</title>
+    <link rel="stylesheet" href="/css/materiales_class.css">
+</head>
+<body>
+    <header>
+        <h1>SISCOMP</h1>
+        <p>Bienvenido al sistema SISCOMP.</p>
+    </header>
+    <aside class="sidebar">
+        <h3>Registro de Profesores</h3>
+        <p>Registre los datos de los profesores y docentes.</p>
+        <h3>Asignación de Materias</h3>
+        <p>Asigne materias a los profesores y docentes.</p>
+        <h3>Control de Horarios</h3>
+        <p>Controle y gestione los horarios de clases.</p>
+        <h3>Materiales de Clases</h3>
+        <p>Administre el material disponible para las clases.</p>
+        <h3>Software a utilizar</h3>
+        <p>Elige el software por utilizar en el laboratorio</p>
+    </aside>
+    <main>
+        <div class="navbar">
+            <a href="index.html">Inicio</a>
+            <a href="asignaMaterias.html">Asignación de Materias</a>
+            <a href="controlHorarios.html">Control de Horarios</a>
+            <a href="mat_class.html">Materiales de Clases</a>
+            <a href="reservas_desktop.html">Ver reservaciones</a>
+            <a href="SoftaUtilizar.html">Software a utilizar</a>
+            <a href="logout.html" class="logout-button">Cerrar Sesión</a>
+        </div><br>
+        <div class="content-wrapper">
+            <div class="form-container">
+                <h2>Reservar Material</h2>
+                <form class="reservation-form" id="reservation-form">
+                    <div class="form-group">
+                        <label for="numero-equipo">Número de equipo:</label>
+                        <select id="numero-equipo">
+                            <option value="">Seleccionar número de equipo</option>
+                            <!-- Opciones para los equipos del 1 al 25 -->
+                            <script>
+                                for (let i = 1; i <= 25; i++) {
+                                    document.write(`<option value="${i}">${i}</option>`);
+                                }
+                            </script>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha-inicio">Fecha/hora de inicio:</label>
+                        <input type="datetime-local" id="fecha-inicio">
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha-fin">Fecha/hora de fin:</label>
+                        <input type="datetime-local" id="fecha-fin">
+                    </div>
+                    <div class="form-group">
+                        <label for="software">Software a utilizar:</label>
+                        <select id="software">
+                            <option value="">Seleccionar software</option>
+                            <!-- Opciones de software se agregarán mediante JavaScript -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="materiales">Materiales disponibles:</label>
+                        <select id="materiales">
+                            <option value="">Seleccionar material</option>
+                            <!-- Opciones de materiales se agregarán mediante JavaScript -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="comentarios">Comentarios:</label>
+                        <textarea id="comentarios" rows="4"></textarea>
+                    </div>
+                    <button type="submit">Reservar</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 SISCOMP - Todos los derechos reservados</p>
+    </footer>
+    <script src="CSS/JS/mat_clasesTec.js"></script>
+</body>
+</html>

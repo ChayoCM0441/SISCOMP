@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Aulas/Laboratorios</title>
+    <link rel="stylesheet" href="/CSS/control_horarios.css">
+</head>
+<body>
+    <header>
+        <h1>SISCOMP</h1>
+        <p>Consultas de Disponibilidad</p>
+    </header>
+    <aside class="sidebar">
+        <h3>Registro de Profesores</h3>
+        <p>Registre los datos de los profesores y docentes.</p>
+        <h3>Asignación de Materias</h3>
+        <p>Asigne materias a los profesores y docentes.</p>
+        <h3>Control de Horarios</h3>
+        <p>Controle y gestione los horarios de clases.</p>
+        <h3>Materiales de Clases</h3>
+        <p>Administre el material disponible para las clases.</p>
+        <h3>Software a utilizar</h3>
+        <p>Elige el software por utilizar en el laboratorio</p>
+    </aside>
+    <main class="main-content">
+        <div class="navbar">
+            <a href="index.html">Inicio</a>
+            <a href="asignaMaterias.html">Asignación de Materias</a>
+            <a href="controlHorarios.html">Control de Horarios</a>
+            <a href="mat_class.html">Materiales de Clases</a>
+            <a href="reservas_desktop.html">Ver reservaciones</a>
+            <a href="SoftaUtilizar.html">Software a utilizar</a>
+            <a href="logout.html" class="logout-button">Cerrar Sesión</a>
+        </div>
+        <br>
+        <div class="content-wrapper">
+            <h2>Consulta de Disponibilidad</h2>
+            <form id="consulta-form">
+                <div>
+                    <label for="consulta-dia">Día:</label>
+                    <select id="consulta-dia" required>
+                        <option value="Lunes">Lunes</option>
+                        <option value="Martes">Martes</option>
+                        <option value="Miércoles">Miércoles</option>
+                        <option value="Jueves">Jueves</option>
+                        <option value="Viernes">Viernes</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="consulta-hora">Hora:</label>
+                    <input type="time" id="consulta-hora" required>
+                </div>
+                <div>
+                    <label for="consulta-edificio">Edificio:</label>
+                    <select id="consulta-edificio" required>
+                        <option value="A">Edificio A</option>
+                        <option value="B">Edificio B</option>
+                        <option value="C">Edificio C</option>
+                        <option value="D">Edificio D</option>
+                        <option value="F">Edificio F</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="consulta-aula">Aula:</label>
+                    <select id="consulta-aula" required>
+                        <option value="">Selecciona un aula</option>
+                        <option value="Aula 1">Aula 1</option>
+                        <option value="Aula 2">Aula 2</option>
+                        <option value="Aula 3">Aula 3</option>
+                        <option value="Aula 4">Aula 4</option>
+                        <option value="Aula 5">Aula 5</option>
+                        <option value="Aula 6">Aula 6</option>
+                        <option value="Aula 7">Aula 7</option>
+                        <option value="Aula 8">Aula 8</option>
+                        <option value="Aula 9">Aula 9</option>
+                        <option value="Aula 10">Aula 10</option>
+                    </select>
+                </div>                
+                <div>
+                    <label for="consulta-laboratorio">Laboratorio:</label>
+                    <select id="consulta-laboratorio">
+                        <option value="">Ninguno</option>
+                        <option value="computo">Laboratorio de Cómputo</option>
+                        <option value="industrial">Laboratorio de Industrial</option>
+                        <option value="nanotecnologia">Laboratorio de Nanotecnología</option>
+                        <option value="electronica">Laboratorio de Electrónica</option>
+                        <option value="mecatronica">Laboratorio de Mecatrónica</option>
+                        <option value="electromecanica">Laboratorio de Electromecánica</option>
+                    </select>
+                </div>
+                <button type="submit">Consultar Disponibilidad</button>
+            </form><br>
+            <div id="disponibilidad-list">
+                <table id="results-table">
+                    <thead>
+                        <tr>
+                            <th>Día</th>
+                            <th>Hora</th>
+                            <th>Edificio</th>
+                            <th>Aula</th>
+                            <th>Laboratorio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Aquí se mostrarán los resultados de la consulta -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 SISCOMP - Todos los derechos reservados</p>
+    </footer>
+    <script src="/public/CSS/JS/consulta_disponibilidad.js"></script>
+    <script>
+        document.getElementById('consulta-form').addEventListener('submit', function(event) {
+            // Evitamos que el formulario se envíe
+            event.preventDefault();
+    
+            // Generamos resultados aleatorios para mostrar en la tabla
+            var dias = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
+            var horas = ['08:00', '10:00', '12:00', '14:00', '16:00'];
+            var edificios = ['A', 'B', 'C', 'D', 'F'];
+            var aulas = ['Aula 1', 'Aula 2', 'Aula 3', 'Aula 4', 'Aula 5', 'Aula 6', 'Aula 7', 'Aula 8', 'Aula 9', 'Aula 10'];
+            var laboratorios = ['Ninguno', 'Laboratorio de Cómputo', 'Laboratorio de Industrial', 'Laboratorio de Nanotecnología', 'Laboratorio de Electrónica', 'Laboratorio de Mecatrónica', 'Laboratorio de Electromecánica'];
+    
+            // Seleccionamos aleatoriamente un índice de cada array
+            var diaIndex = Math.floor(Math.random() * dias.length);
+            var horaIndex = Math.floor(Math.random() * horas.length);
+            var edificioIndex = Math.floor(Math.random() * edificios.length);
+            var aulaIndex = Math.floor(Math.random() * aulas.length);
+            var laboratorioIndex = Math.floor(Math.random() * laboratorios.length);
+    
+            // Obtenemos los valores aleatorios
+            var diaAleatorio = dias[diaIndex];
+            var horaAleatoria = horas[horaIndex];
+            var edificioAleatorio = edificios[edificioIndex];
+            var aulaAleatoria = aulas[aulaIndex];
+            var laboratorioAleatorio = laboratorios[laboratorioIndex];
+    
+            // Creamos una fila para la tabla
+            var fila = document.createElement('tr');
+    
+            // Añadimos las celdas con los valores aleatorios
+            fila.innerHTML = `
+                <td>${diaAleatorio}</td>
+                <td>${horaAleatoria}</td>
+                <td>${edificioAleatorio}</td>
+                <td>${aulaAleatoria}</td>
+                <td>${laboratorioAleatorio}</td>
+            `;
+    
+            // Agregamos la fila a la tabla
+            document.getElementById('results-table').getElementsByTagName('tbody')[0].appendChild(fila);
+        });
+    </script>
+</body>
+</html>
+
+    

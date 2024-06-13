@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SISCOMP - Cerrar Sesión</title>
+    <link rel="stylesheet" type="text/css" href="/css/cerrarLogout.css">
+</head>
+<body>
+    <div class="logout-box">
+        <form id="logoutForm">
+            <h1>Cerrar Sesión</h1>
+            <p>¿Está seguro que quiere cerrar sesión?</p>
+            <br>
+            <button type="submit" id="logoutButton">Sí, cerrar sesión</button><br>
+            <button type="button" id="cancelButton">Cancelar</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('logoutForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Previene el envío normal del formulario
+            
+            // Muestra la alerta de confirmación
+            alert('Sesión cerrada exitosamente');
+            
+            // Redirige a la página de login
+            window.location.href = '/login.html';
+        });
+
+        document.getElementById('cancelButton').addEventListener('click', function() {
+            // Redirige a la página principal o donde desees que vaya el usuario si cancela
+            window.location.href = '/index.html';
+        });
+    </script>
+</body>
+</html>

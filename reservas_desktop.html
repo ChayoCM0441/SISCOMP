@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas de Materiales</title>
+    <link rel="stylesheet" href="/CSS/reserva_equipo.css">
+</head>
+<body>
+    <header> 
+        <h1>SISCOMP</h1>
+        <p>Reservas de Materiales</p>
+    </header>
+    <br>
+        <aside class="sidebar">
+            <h3>Registro de Profesores</h3>
+            <p>Registre los datos de los profesores y docentes.</p>
+            <h3>Asignación de Materias</h3>
+            <p>Asigne materias a los profesores y docentes.</p>
+            <h3>Control de Horarios</h3>
+            <p>Controle y gestione los horarios de clases.</p>
+            <h3>Materiales de Clases</h3>
+            <p>Administre el material disponible para las clases.</p>
+            <h3>Software a utilizar</h3>
+            <p>Elige el software por utilizar en el laboratorio</p>
+        </aside>
+        <main class="main-content">
+            <div class="navbar">
+                <a href="index.html">Inicio</a>
+                <a href="asignaMaterias.html">Asignación de Materias</a>
+                <a href="controlHorarios.html">Control de Horarios</a>
+                <a href="mat_class.html">Materiales de Clases</a>
+                <a href="reservas_desktop.html">Ver reservaciones</a>
+                <a href="SoftaUtilizar.html">Software a utilizar</a>
+                <a href="logout.html" class="logout-button">Cerrar Sesión</a>
+            </div><br>
+            <div class="reservation-container">
+                <h2>Reservas Realizadas</h2>
+                <table id="reservation-table" class="reservas-table">
+                    <thead>
+                        <tr>
+                            <th>Número de equipo</th>
+                            <th>Fecha/hora de inicio</th>
+                            <th>Fecha/hora de fin</th>
+                            <th>Software</th>
+                            <th>Materiales</th>
+                            <th>Comentarios</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reservation-details">
+                        <!-- Las filas se agregarán mediante JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            <div id="confirmation-message"></div>
+        </main>
+        <footer>
+            <p>&copy; 2024 SISCOMP - Todos los derechos reservados</p>
+        </footer>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                // Obtener las reservas desde el almacenamiento local
+                const reservations = JSON.parse(localStorage.getItem("reservations")) || [];
+    
+                // Obtener la referencia a la tabla de detalles de reserva
+                const reservationDetails = document.getElementById('reservation-details');
+    
+                // Agregar cada reserva a la tabla
+                reservations.forEach(reservation => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${reservation.equipo}</td>
+                        <td>${reservation.fechaInicio}</td>
+                        <td>${reservation.fechaFin}</td>
+                        <td>${reservation.software}</td>
+                        <td>${reservation.materiales}</td>
+                        <td>${reservation.comentarios}</td>
+                    `;
+                    reservationDetails.appendChild(row);
+                });
+            });
+        </script>
+    </body>
+    </html>

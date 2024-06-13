@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SISCOMP</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>SISCOMP</h1>
+        <p>Bienvenido al sistema SISCOMP.</p>
+    </header>
+    <br>
+    <aside class="sidebar">
+        <h3>Registro de Profesores</h3>
+        <p>Registre los datos de los profesores y docentes.</p>
+        <h3>Asignación de Materias</h3>
+        <p>Asigne materias a los profesores y docentes.</p>
+        <h3>Control de Horarios</h3>
+        <p>Controle y gestione los horarios de clases.</p>
+        <h3>Materiales de Clases</h3>
+        <p>Administre el material disponible para las clases.</p>
+        <h3>Software a utilizar</h3>
+        <p>Elige el software por utilizar en el laboratorio</p>
+    </aside>
+    <br>
+    <main>
+        <div class="navbar">
+            <a href="index.html">Inicio</a>
+            <a href="asignaMaterias.html">Asignación de Materias</a>
+            <a href="controlHorarios.html">Control de Horarios</a>
+            <a href="mat_class.html">Materiales de Clases</a>
+            <a href="reservas_desktop.html">Ver reservaciones</a>
+            <a href="SoftaUtilizar.html">Software a utilizar</a>
+            <a href="logout.html" class="logout-button">Cerrar Sesión</a>
+        </div><br>
+        <!-- Perfil del Profesor -->
+        <section class="teacher-profile">
+            <div class="profile-container">
+                <div class="profile-photo-container">
+                    <img src="/public/img/profile.jpg" alt="Foto de perfil" class="profile-photo" id="profile-photo-preview" width="150">
+                    <input type="file" id="profile-photo" class="profile-photo-input" accept="image/*" style="display: none;" onchange="previewPhoto()"><br>
+                    <button onclick="editPhoto()" class="edit-button">Editar Foto</button><br>
+                    <button onclick="savePhoto()" class="save-button">Guardar Foto</button>
+                </div>
+                <div class="name-container">
+                    <h2 class="teacher-name" id="teacher-name-display">Nombre del docente</h2>
+                    <input type="text" id="teacher-name" class="teacher-name-input" value="Nombre del Profesor" style="display: none;">
+                    <button onclick="editName()" class="edit-button">Editar Nombre</button><br>
+                    <button onclick="saveName()" class="save-button">Guardar cambios</button>
+                </div>
+            </div>
+            <br>
+            <div class="careers-container">
+                <p><strong>Carreras:</strong> <span id="careers-display"></span></p>
+                <input type="text" id="careers-input" class="careers-input" value="Ingeniería de Sistemas, Ciencias de la Computación" style="display: none;">
+                <button onclick="editCareers()" class="edit-button">Editar Carrera(s)</button><br>
+                <button onclick="saveCareers()" class="save-button">Guardar cambios</button>
+            </div>                       
+            <h3 style="text-align: center;">Horarios de Clase</h3>
+            <table id="tabla-horarios">
+                <thead>
+                    <tr>
+                        <th>Materia</th>
+                        <th>Horas</th>
+                        <th>Turno</th>
+                        <th>Aula</th>
+                        <th>Edificio</th>
+                        <th>Clave Única</th>
+                        <th>Laboratorio</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aquí se mostrarán los horarios -->
+                </tbody>
+            </table>
+            <!-- Botones CRUD -->
+            <div class="crud-buttons">
+                <button id="create-button" type="button">Crear Horario</button>
+                <button id="read-button" type="button">Ver Horario</button>
+                <button id="update-button" type="button">Actualizar Horario</button>
+                <button id="delete-button" type="button">Eliminar Horario</button>
+            </div>
+            <br>
+            <button onclick="window.print()" class="print-button">Imprimir Horario</button>
+            <br>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 SISCOMP - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        function editPhoto() {
+            document.getElementById('profile-photo').style.display = 'block';
+            document.querySelector('.profile-photo-container .save-button').style.display = 'block';
+        }
+
+        function previewPhoto() {
+            var file = document.getElementById('profile-photo').files[0];
+            var reader = new FileReader();
+
+            reader.onloadend = function() {
+                document.getElementById('profile-photo-preview').src = reader.result;
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                document.getElementById('profile-photo-preview').src = "/public/img/profile.jpg";
+            }
+        }
+
+        function savePhoto() {
+            document.getElementById('profile-photo').style.display = 'none';
+            document.querySelector('.profile-photo-container .save-button').style.display = 'none';
+            // Aquí iría el código para guardar la foto en el servidor
+        }
+
+        function editName() {
+            document.getElementById('teacher-name-display').style.display = 'none';
+            document.getElementById('teacher-name').style.display = 'block';
+            document.querySelector('.name-container .save-button').style.display = 'block';
+        }
+
+        function saveName() {
+            var nameInput = document.getElementById('teacher-name');
+            document.getElementById('teacher-name-display').innerText = nameInput.value;
+            document.getElementById('teacher-name-display').style.display = 'block';
+            nameInput.style.display = 'none';
+            document.querySelector('.name-container .save-button').style.display = 'none';
+            // Aquí iría el código para guardar el nombre en el servidor
+        }
+
+        function editCareers() {
+            document.getElementById('careers-display').style.display = 'none';
+            document.getElementById('careers-input').style.display = 'block';
+            document.querySelector('.careers-container .save-button').style.display = 'block';
+        }
+
+        function saveCareers() {
+            var careersInput = document.getElementById('careers-input');
+            document.getElementById('careers-display').innerText = careersInput.value;
+            document.getElementById('careers-display').style.display = 'block';
+            careersInput.style.display = 'none';
+            document.querySelector('.careers-container .save-button').style.display = 'none';
+            // Aquí iría el código para guardar las carreras en el servidor
+        }
+
+        function confirmLogout() {
+            // Mostrar ventana de confirmación
+            var result = confirm("¿Está seguro que quiere cerrar sesión?");
+            if (result) {
+                // Redirigir a la página de cierre de sesión si el usuario confirma
+                window.location.href = 'logout.html';
+            }
+        }
+
+        function logout() {
+            // Redirigir a la página de cierre de sesión
+            window.location.href = 'logout.html';
+        }
+
+        // Obtén el nombre del usuario de localStorage
+        const userName = localStorage.getItem('userName');
+
+        // Si hay un nombre de usuario, muéstralo
+        if (userName) {
+            document.getElementById('userName').innerText = userName;
+        }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Obtener los horarios guardados en localStorage
+            const horariosGuardados = JSON.parse(localStorage.getItem("horarios")) || [];
+
+            // Mostrar los horarios en una tabla en la página de inicio
+            const tablaHorarios = document.getElementById("tabla-horarios").getElementsByTagName('tbody')[0];
+
+            horariosGuardados.forEach(horario => {
+                const fila = document.createElement("tr");
+
+                fila.innerHTML = `
+                    <td>${horario.materia}</td>
+                    <td>${horario.horas}</td>
+                    <td>${horario.turno}</td>
+                    <td>${horario.aula}</td>
+                    <td>${horario.edificio}</td>
+                    <td>${horario.clave}</td>
+                    <td>${horario.laboratorio ? 'Sí' : 'No'}</td>
+                    <td class="acciones-buttons">
+                        <button class="delete-button" onclick="eliminarHorario(this)">Eliminar</button>
+                    </td>
+                `;
+                tablaHorarios.appendChild(fila);
+            });
+        });
+
+        // Función para obtener el horario actual del formulario
+        function obtenerHorarioActual() {
+            return {
+                materia: document.getElementById('materia').value,
+                horas: document.getElementById('horas').value,
+                turno: document.getElementById('turno').value,
+                aula: document.getElementById('aula').value,
+                edificio: document.getElementById('edificio').value,
+                clave: document.getElementById('clave').value,
+                laboratorio: document.getElementById('laboratorio').checked
+            };
+        }
+
+        // Función para mostrar el horario en la tabla
+        function mostrarHorarioEnTabla(horario) {
+            const tablaHorarios = document.getElementById("tabla-horarios").getElementsByTagName('tbody')[0];
+            const fila = document.createElement("tr");
+
+            fila.innerHTML = `
+                <td>${horario.materia}</td>
+                <td>${horario.horas}</td>
+                <td>${horario.turno}</td>
+                <td>${horario.aula}</td>
+                <td>${horario.edificio}</td>
+                <td>${horario.clave}</td>
+                <td>${horario.laboratorio ? 'Sí' : 'No'}</td>
+                <td class="acciones-buttons">
+                    <button class="edit-button" onclick="editarHorario(this)">Editar</button>
+                    <button class="delete-button" onclick="eliminarHorario(this)">Eliminar</button>
+                </td>
+            `;
+            tablaHorarios.appendChild(fila);
+        }
+
+        // Función para editar un horario
+        function editarHorario(boton) {
+            const fila = boton.parentElement.parentElement;
+            const celdas = fila.getElementsByTagName('td');
+
+            // Rellenar el formulario con los datos de la fila
+            document.getElementById('materia').value = celdas[0].innerText;
+            document.getElementById('horas').value = celdas[1].innerText;
+            document.getElementById('turno').value = celdas[2].innerText;
+            document.getElementById('aula').value = celdas[3].innerText;
+            document.getElementById('edificio').value = celdas[4].innerText;
+            document.getElementById('clave').value = celdas[5].innerText;
+            document.getElementById('laboratorio').checked = celdas[6].innerText === 'Sí';
+
+            // Eliminar la fila actual
+            fila.remove();
+        }
+
+        // Función para eliminar un horario
+        function eliminarHorario(boton) {
+            const fila = boton.parentElement.parentElement;
+            fila.remove();
+        }
+    </script>
+</body>
+</html>
+ 

@@ -1,0 +1,67 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ocupa toda la altura del viewport */
+  margin: 0; /* Elimina márgenes */
+  background-color: rgb(216, 191, 216);
+}
+
+.container {
+  width: 90%;
+  max-width: 500px; /* Puedes ajustar el ancho máximo según tus necesidades */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Centra el texto dentro del contenedor */
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  text-align: left;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+  width: calc(100% - 20px);
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.back-to-menu {
+  background-color: #0095f8;
+  color: white;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.back-to-menu:hover {
+  background-color: #007bbf;
+}

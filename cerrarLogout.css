@@ -1,0 +1,43 @@
+body{
+    background-color: rgb(216, 191, 216);
+}
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: auto; /* Centra los botones horizontal y verticalmente */
+    display: block; /* Convertir el botón en un bloque para aplicar margen automático */
+  }
+.logout-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente */
+    align-items: center; /* Centra horizontalmente */
+    text-align: center; /* Centra el texto dentro de los elementos */
+    position: absolute; /* Posiciona de forma absoluta */
+    top: 50%; /* Centra verticalmente */
+    left: 50%; /* Centra horizontalmente */
+    transform: translate(-50%, -50%); /* Centra respecto al centro */
+    margin-top: 0px; /* Espacio en la parte superior */
+    background-color: white;
+    padding: inherit;
+    padding-top: 40px;
+  padding-block: 40px;
+    margin: auto;
+    border-radius: 15px;
+    width: 250%; /* Ancho del contenedor */
+    max-width: 500px; /* Ancho máximo */
+    height: auto; /* Altura automática */
+  }
+  .forgot-password-box{
+    background-color: whitesmoke;
+    padding: 20px;
+    margin: auto;
+    border-radius: 5px;
+    
+  }
+  

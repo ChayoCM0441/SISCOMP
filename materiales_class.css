@@ -1,0 +1,163 @@
+body {
+    margin: auto;
+    padding: 0;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 200px auto; /* Ancho de la barra lateral y el contenido */
+    grid-template-rows: auto minmax(calc(100vh - 50px), auto) 50px; /* Ajuste del orden para colocar el contenedor principal y el sidebar */
+    grid-template-areas:
+      "header header"
+      "sidebar main" /* Colocamos el sidebar y el contenedor principal juntos */
+      "footer footer";
+    gap: 10px;
+    min-height: 100vh;
+    background-color: rgb(216, 191, 216);
+}
+
+header {
+    grid-area: header;
+    background-color: #05050541;
+    padding: 1em 0;
+    text-align: center;
+    position: relative;
+    width: 100%; /* Hacer el header ocupar todo el ancho disponible */
+}
+
+header h1 {
+    color: rgb(0, 0, 0);
+    font-size: 36px;
+}
+
+/* Estilos para la barra de navegación */
+.navbar {
+    grid-area: navbar;
+    position: absolute; /* Posicionamos la barra de navegación de forma absoluta */
+    top: 25%; /* Ajustamos para que esté entre el header y el contenedor */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #333;
+    overflow: hidden;
+    width: 100%;
+    display: flex; /* Para colocar los elementos de forma horizontal */
+    justify-content: center; /* Centrar elementos en la barra de navegación */
+    text-align: center;
+}
+
+.navbar a {
+    display: inline-block; /* Para que los elementos sean en línea */
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar a:first-child {
+    background-color: #4CAF50; /* Color de fondo verde para el primer enlace */
+}
+
+.navbar a:hover {
+    background-color: #555; /* Cambio de color de fondo en el hover */
+}
+
+.navbar a.active {
+    background-color: #4CAF50; /* Color de fondo activo */
+    color: white;
+}
+
+main {
+    grid-area: main;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    width: calc(100% - 240px); /* Hacemos el contenedor un poco más ancho */
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: #ddd;
+    padding: 20px;
+    width: 200px;
+    margin-top: -10px; /* Sube un poco la barra lateral */
+    justify-self: start; /* Mantén la barra lateral al inicio del contenedor */
+}
+
+.sidebar h3 {
+    color: #4CAF50;
+    margin-bottom: 5px;
+    text-align: center; /* Centra el texto del encabezado de la barra lateral */
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+footer {
+    grid-area: footer;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    width: 100%; /* Ancho de la ventana */
+    margin-top: -10px; /* Sube un poco el footer */
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+}
+
+.content {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%; /* Ajustamos el ancho del contenedor */
+    max-width: 800px; /* Limitamos el ancho máximo del contenedor */
+    box-sizing: border-box; /* Mantenemos el ancho dentro del padding y el borde */
+}
+
+.form-container {
+    max-width: 100%; /* Hacemos que la anchura sea del 100% para adaptarse al contenedor */
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="datetime-local"],
+.form-group select,
+.form-group textarea {
+    width: calc(100% - 16px); /* Hacemos que el ancho sea del 100% pero con margen */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
